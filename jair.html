@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mano Animada</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      background-size: 400% 400%;
+      animation: fondo 10s ease infinite;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: 'Bebas Neue', sans-serif;
+      overflow: hidden;
+    }
+
+    @keyframes fondo {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h2 {
+      font-size: 40px;
+      text-shadow: 2px 2px 8px #000, 0 0 10px #fff;
+      margin: 0 0 20px;
+      animation: parpadeo 2s infinite;
+    }
+
+    @keyframes parpadeo {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .mano {
+      font-size: 250px; /* 👈 Emoji gigante */
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      opacity: 1;
+      text-shadow: 0 0 30px #fff;
+      transform: scale(1);
+    }
+
+    .ocultar {
+      transform: scale(0.7) rotate(-10deg);
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Para Jair jajaj 😆</h2>
+  <div id="mano" class="mano">👊🏼</div>
+
+  <script>
+    const mano = document.getElementById('mano');
+    let estado = 'puño';
+
+    setInterval(() => {
+      mano.classList.add('ocultar');
+
+      setTimeout(() => {
+        mano.textContent = (estado === 'puño') ? '🖕🏼' : '👊🏼';
+        estado = (estado === 'puño') ? 'dedo' : 'puño';
+        mano.classList.remove('ocultar');
+      }, 300);
+    }, 800);
+  </script>
+
+</body>
+</html>
